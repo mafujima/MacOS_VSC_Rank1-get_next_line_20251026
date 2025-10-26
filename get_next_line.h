@@ -6,7 +6,7 @@
 /*   By: mafujima <mafujima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 20:01:19 by mafujima          #+#    #+#             */
-/*   Updated: 2025/10/26 06:18:23 by mafujima         ###   ########.fr       */
+/*   Updated: 2025/10/26 22:29:43 by mafujima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,9 @@ char	*ft_extract_line(char *stash);
 char	*ft_strchr_gnl(const char *stash, int c);
 size_t	ft_strlen_gnl(const char *stash);
 
-char	    *ft_strdup_gnl(char *stash);
-char		*ft_gnl_strndup(const char *s, size_t n);
-char		*ft_gnl_strdup(const char *s);
-char 		*ft_update_stash_after_line(char *stash);
-
-
+char	*ft_strdup_gnl(char *stash);
+char	*ft_gnl_strndup(const char *s, size_t n);
+char	*ft_gnl_strdup(const char *s);
+char	*ft_update_stash_after_line(char *stash);
 
 #endif

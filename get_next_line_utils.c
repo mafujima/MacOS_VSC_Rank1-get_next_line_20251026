@@ -6,7 +6,7 @@
 /*   By: mafujima <mafujima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 20:43:41 by mafujima          #+#    #+#             */
-/*   Updated: 2025/10/26 21:47:36 by mafujima         ###   ########.fr       */
+/*   Updated: 2025/10/26 22:33:55 by mafujima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,23 +46,24 @@ char	*ft_extract_line(char *stash)
 {
 	char	*res;
 
-	if(!ft_strchr_gnl(stash, '\n'))
+	if (!ft_strchr_gnl(stash, '\n'))
 		return (ft_strdup_gnl(stash));
-	res = ft_gnl_strndup(stash, (size_t)((ft_strchr_gnl(stash, '\n') - stash) + 1));
+	res = ft_gnl_strndup(stash, (size_t)((ft_strchr_gnl(stash, '\n')
+					- stash) + 1));
 	return (res);
 }
 
-char *ft_update_stash_after_line(char *stash)
-{	
+char	*ft_update_stash_after_line(char *stash)
+{
 	char	*n;
 	char	*new_line;
-	
+
 	n = NULL;
 	new_line = NULL;
 	if (!stash)
 		return (NULL);
 	n = ft_strchr_gnl(stash, '\n');
-	if(!n)
+	if (!n)
 		return (free(stash), NULL);
 	if (*(n + 1) == '\0')
 		return (free(stash), stash = NULL, NULL);
@@ -81,7 +82,7 @@ char	*ft_strjoin_gnl(char *stash, char *buffer)
 	if (ft_strlen_gnl(stash) == 0 && ft_strlen_gnl(buffer) == 0)
 		return (NULL);
 	res = (char *)malloc(sizeof(char) * ((ft_strlen_gnl(stash)
-				+ ft_strlen_gnl(buffer)) + 1));
+					+ ft_strlen_gnl(buffer)) + 1));
 	if (!res)
 		return (NULL);
 	p = res;
@@ -97,7 +98,7 @@ char	*ft_strdup_gnl(char *stash)
 {
 	char	*res;
 	char	*p;
-	
+
 	if (!stash)
 		return (NULL);
 	res = (char *)malloc(sizeof(char) * (ft_strlen_gnl(stash) + 1));
@@ -108,47 +109,4 @@ char	*ft_strdup_gnl(char *stash)
 		*p++ = *stash++;
 	*p = '\0';
 	return (res);
-}
-
-char	*ft_gnl_strndup(const char *stash, size_t n)
-{
-	char	*res;
-	char	*p;
-	size_t	len_to_copy;
-
-	len_to_copy = ft_strlen_gnl(stash);
-	if (ft_strlen_gnl(stash) < n)
-		len_to_copy = ft_strlen_gnl(stash);
-	else 
-		len_to_copy = n;
-	res = (char *)malloc(sizeof(char) * (len_to_copy + 1));
-	if (res == NULL)
-		return (NULL);
-	p = res;
-	while (*stash && len_to_copy--)
-		*p++ = *stash++;
-	*p = '\0';
-	return (res);
-}
-
-char	*ft_strchr_gnl(const char *stash, int c)
-{
-	if (stash == NULL)
-		return (NULL);
-	while (*stash != '\0' && *stash != (char)c) 
-		stash++;
-	if (*stash == (char)c)
-		return ((char *)stash);
-	else
-		return (NULL);
-}
-
-size_t	ft_strlen_gnl(const char *stash)
-{
-	size_t	i;
-
-	i = 0;
-	while (stash[i])
-		i++;
-	return (i);
 }
